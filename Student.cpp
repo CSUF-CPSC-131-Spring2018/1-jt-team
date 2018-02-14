@@ -7,13 +7,13 @@ Student::Student() {
 	nCourses = 0; // Set int nCourses to 0
 }
 
-Student::Student(const string &cwid) {
-	// TO BE COMPLETED
-
+Student::Student(const string &pcwid) {
+	cwid = pcwid; // Initialize the reference input to cwid
+	nCourses = 0; // Set int nCourses to 0
 }
 
 string Student::getCWID() {
-	// TO BE COMPLETED
+	return cwid;
 }
 
 void Student::addCourseGrade (const string &courseName, char grade) {
