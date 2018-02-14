@@ -3,8 +3,8 @@
 #include <iostream>
 
 Student::Student() {
-	// TO BE COMPLETED
-
+	cwid = " "; // Initialize string cwid to blank
+	nCourses = 0; // Set int nCourses to 0
 }
 
 Student::Student(const string &cwid) {
