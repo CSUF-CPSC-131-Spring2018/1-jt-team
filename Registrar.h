@@ -15,8 +15,6 @@ public:
 	// add constructors, destructors, assignment operators if needed
 
 private:
-	// Add private member variables for your class along with any 
-	// other variables required to implement the public member functions
-	// TO BE COMPLETED
-
+	int numStudents;
+	Student *head;
 };
