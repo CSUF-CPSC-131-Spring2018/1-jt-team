@@ -22,7 +22,10 @@ void Student::addCourseGrade (const string &courseName, char grade) {
 }
 
 double Student::getGPA() {
-	// TO BE COMPLETED
+	// Calculate the GPA by doing the following:
+	// 1. Multiply each numeric grade by number of credits worth.
+	// 2. Add all the numbers to get the total sum and recast it to double.
+	// 3. Divide the sum by number of classes taken to get the GPA.
 
 }
 
@@ -33,7 +36,10 @@ double Student::getGPA() {
 // CS 131		B
 // GPA = 2.6667
 void Student::printTranscript() {
-	// TO BE COMPLETED
-
+	for (int j = 0; j < nCourses; j++)
+	{
+		// Display the student's transcript containing
+		// the courses taken, grade, and the GPA.
+	}
 }
 
