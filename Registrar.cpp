@@ -36,6 +36,7 @@ Student& Registrar::getStudent(string pcwid) const {
 	bool found;
 	found = false;
 
+	// Check while the node pointer is not pointing to null
 	while ((ptr != NULL) && (found == false))
 	{
 		if (ptr->getCWID() == pcwid)
