@@ -28,13 +28,34 @@ void Registrar::readTextfile(string filename) {
 
 // return Student object corresponding to a given CWID
 // getStudent must throw an exception if cwid is invalid
-Student& Registrar::getStudent(string cwid) const {
-	// TO BE COMPLETED
+Student& Registrar::getStudent(string pcwid) const {
+	// First, check whether an invalid cwid exists.
+	// If it does, then throw an exception with an error message.
+	Student *ptr;
+	ptr = head;
+	bool found;
+	found = false;
+
+	while ((ptr != NULL) && (found == false))
+	{
+		if (ptr->getCWID() == pcwid)
+		{
+			found = true;
+		}
+		else
+		{
+			throw invalid_argument("Invalid CWID");
+		}
+	}
+	if (found == true)
+	{
+		return *ptr;
+	}
 }
 
 // process a line from the text file
 void Registrar::addLine(string courseName, string cwid, char grade) {
-	// TO BE COMPLETED
-
+	// Check whether the student's cwid does not exist.
+	// If it doesn't, then create a new student object.
 }
 
