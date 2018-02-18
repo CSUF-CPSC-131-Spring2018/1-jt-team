@@ -16,9 +16,11 @@ string Student::getCWID() {
 	return cwid;
 }
 
-void Student::addCourseGrade (const string &courseName, char grade) {
-	// TO BE COMPLETED
-
+void Student::addCourseGrade (const string &pcourseName, char pgrade) {
+	// Allocate new memory for the courseName and courseGrade
+	courseName[nCourses] = pcourseName;
+	courseGrade[nCourses] = pgrade;
+	nCourses++; // Increment the number of courses by 1
 }
 
 double Student::getGPA() {
@@ -28,33 +30,41 @@ double Student::getGPA() {
 	// 3. Add all the numbers to get the total sum.
 	// 4. Divide the sum by number of classes taken to get the GPA.
 	double gpa;
-	double sum = 0;
+	double sum = 0.0;
 	char grade = '0';
-	double credits;
+	double credits = 0.0;
 
 	for (int i = 0; i < nCourses; i++)
 	{
-		sum += grade;
-	}
+		grade = courseGrade[i];
 
-    switch(grade)
-    {
-    case 'A':
-        credits = 4.0;
-        break;
-    case 'B':
-        credits = 3.0;
-        break;
-    case 'C':
-        credits = 2.0;
-        break;
-    case 'D':
-        credits = 1.0;
-        break;
-    case 'F':
-        credits = 0.0;
-        break;
-    }
+		switch (grade)
+		{
+		case 'A':
+		case 'a':
+			credits = 4.0;
+			break;
+		case 'B':
+		case 'b':
+			credits = 3.0;
+			break;
+		case 'C':
+		case 'c':
+			credits = 2.0;
+			break;
+		case 'D':
+		case 'd':
+			credits = 1.0;
+			break;
+		case 'F':
+		case 'f':
+			credits = 0.0;
+			break;
+		default:
+			credits = 0.0;
+		}
+		sum = sum + credits;
+	}
 
 	gpa = sum / nCourses;
 	return gpa;
