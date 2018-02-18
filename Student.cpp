@@ -33,7 +33,7 @@ double Student::getGPA() {
 	double sum = 0.0;
 	char grade = '0';
 	double credits = 0.0;
-
+	
 	for (int i = 0; i < nCourses; i++)
 	{
 		grade = courseGrade[i];
