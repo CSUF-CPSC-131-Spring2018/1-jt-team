@@ -29,8 +29,9 @@ void Registrar::readTextfile(string filename) {
 // return Student object corresponding to a given CWID
 // getStudent must throw an exception if cwid is invalid
 Student& Registrar::getStudent(string pcwid) const {
-	// First, check whether an invalid cwid exists.
+	// First, use the bool found to check whether an invalid cwid exists.
 	// If it does, then throw an exception with an error message.
+	// Otherwise, return the pointer and set the bool found to true.
 	Student *ptr;
 	ptr = head;
 	bool found;
