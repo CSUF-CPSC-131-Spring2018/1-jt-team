@@ -67,19 +67,20 @@ Student& Registrar::getStudent(string pcwid) const {
 
 // process a line from the text file
 void Registrar::addLine(string courseName, string cwid, char grade) {
-	// Assume the text files being read are valid.
-	// As long as the pointer is not pointing to the end of file or NULL,
-	// process each line with the courseName, cwid, and grade.
-	Student &s = getStudent(pcwid);
-	if (s.getCWID() == pcwid)
-	{
+	// Use the try/catch block to check if the student does not exist.
+	// If it does not, then create a new student object and call the
+	// addCourseGrade function. Otherwise, just call the getStudent
+	// and the addCourseGrade functions.
+	try {
+		Student &s = getStudent(pcwid);
 		s.addCourseGrade(courseName, grade);
 	}
-	else
+	catch (exception &e)
 	{
 		Student *s0 = new Student(pcwid);
 		s0->setNext(head);
 		head = s0;
+		numStudents++;
 		s0->addCourseGrade(courseName, grade);
 	}
 }
