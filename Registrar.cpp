@@ -6,6 +6,16 @@
 
 using namespace std;
 
+Registrar::Registrar()
+{
+	numStudents = 0;	// set numStudents to 0
+	head = nullptr;		// set head to nullptr
+}
+
+Registrar::~Registrar()
+{
+}
+
 // Load information from a text file with the given filename
 // THIS FUNCTION IS COMPLETE
 void Registrar::readTextfile(string filename) {
@@ -57,7 +67,19 @@ Student& Registrar::getStudent(string pcwid) const {
 
 // process a line from the text file
 void Registrar::addLine(string courseName, string cwid, char grade) {
-	// Check whether the student's cwid does not exist.
-	// If it doesn't, then create a new student object.
+	// Assume the text files being read are valid.
+	// As long as the pointer is not pointing to the end of file or NULL,
+	// process each line with the courseName, cwid, and grade.
+	Student &s = getStudent(pcwid);
+	if (s.getCWID() == pcwid)
+	{
+		s.addCourseGrade(courseName, grade);
+	}
+	else
+	{
+		Student *s0 = new Student(pcwid);
+		s0->setNext(head);
+		head = s0;
+		s0->addCourseGrade(courseName, grade);
+	}
 }
-
