@@ -5,11 +5,13 @@
 Student::Student() {
 	cwid = " "; // Initialize string cwid to blank
 	nCourses = 0; // Set int nCourses to 0
+	next = nullptr;	// Set next to nullptr
 }
 
 Student::Student(const string &pcwid) {
 	cwid = pcwid; // Initialize the reference input to cwid
 	nCourses = 0; // Set int nCourses to 0
+	next - nullptr;	// Set next to nullptr
 }
 
 string Student::getCWID() {
@@ -87,3 +89,12 @@ void Student::printTranscript() {
 	cout << "GPA = " << getGPA() << endl;
 }
 
+Student *Student::getNext()
+{
+	return next;	
+}
+
+void Student::getNext(Student *pnext)
+{
+	next = pnext;
+}
