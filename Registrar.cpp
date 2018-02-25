@@ -12,8 +12,46 @@ Registrar::Registrar()
 	head = nullptr;		// set head to nullptr
 }
 
+// destructor
 Registrar::~Registrar()
 {
+	deleteRegistrar();
+}
+
+// Destroy the Registrar
+void Registrar::deleteRegistrar()
+{
+	Student *nodePtr;
+
+	// Destroy the list while the nodePtr is not at the end of the list
+	while (head != nullptr)
+	{
+		// Let nodePtr be the head
+		nodePtr = head;
+
+		// Position the pointer to the next node
+		head = nodePtr->getNext();
+
+		// Delete the current node
+		delete nodePtr;
+	}
+	numStudents = 0;
+}
+
+// assignment operator
+Registrar& Registrar::operator=(const Registrar& a)
+{
+	if (this != &a)
+	{
+		deleteRegistrar();
+		Student *aptr = a.head;
+		numStudents = a.numStudents;
+		head = new Student;
+		for (int i = 0; i < a.numStudents - 1; i++)
+		{
+			aptr = aptr->getNext();
+		}
+	}
 }
 
 // Load information from a text file with the given filename
