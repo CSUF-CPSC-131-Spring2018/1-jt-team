@@ -9,9 +9,11 @@ class Registrar {
 public:
 	Registrar();	// empty constructor
 	~Registrar();	// destructor
+	Registrar& Registrar::operator=(const Registrar& a);	// assignment constructor
 	void readTextfile(string filename); // Load information from a text file with the given filename: THIS IS COMPLETE
 	void addLine(string courseName, string cwid, char grade); // process a line from the text file
 	Student& getStudent(string cwid) const; // return the Student object corresponding to a given CWID
+	void destroyRegistrar();	// destroy the Registrar
 	// getStudent must throw an exception if cwid is invalid
 	// add constructors, destructors, assignment operators if needed
 
