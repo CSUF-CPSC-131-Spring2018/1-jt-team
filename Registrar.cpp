@@ -38,20 +38,43 @@ void Registrar::deleteRegistrar()
 	numStudents = 0;
 }
 
-// assignment operator
-Registrar& Registrar::operator=(const Registrar& a)
+// copy constructor
+Registrar::Registrar(const Registrar& r2)
 {
-	if (this != &a)
+	head = nullptr;
+	Student *p2 = r2.head;
+	// As long as p2 is not pointing to null,
+	while (p2 != nullptr)
+	{
+		// Allocate p1 pointer's memory
+		Student *p1 = new Student(*p2);
+		// And copy the contents of the pointer
+		p1->setNext(head);
+		head = p1;
+		p2 = p2->getNext();
+	}
+}
+
+// assignment operator
+Registrar& Registrar::operator=(const Registrar& r2)
+{
+	if (this != &r2)
 	{
 		deleteRegistrar();
-		Student *aptr = a.head;
-		numStudents = a.numStudents;
-		head = new Student;
-		for (int i = 0; i < a.numStudents - 1; i++)
+		head = nullptr;
+		Student *p2 = r2.head;
+		// As long as p2 is not pointing to null,
+		while (p2 != nullptr)
 		{
-			aptr = aptr->getNext();
+			// Allocate p1 pointer's memory
+			Student *p1 = new Student(*p2);
+			// And copy the contents of the pointer
+			p1->setNext(head);
+			head = p1;
+			p2 = p2->getNext();
 		}
 	}
+	return *this;
 }
 
 // Load information from a text file with the given filename
