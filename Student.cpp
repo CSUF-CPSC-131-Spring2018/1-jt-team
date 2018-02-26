@@ -81,7 +81,7 @@ double Student::getGPA() {
 void Student::printTranscript() {
 	// Display the student's transcript containing the
 	// courses taken, the grade, and the GPA.
-	cout << "TRANSCRIPT FOR CWID=" << cwid;
+	cout << "TRANSCRIPT FOR CWID=" << cwid << endl;
 	for (int j = 0; j < nCourses; j++)
 	{
 		cout << courseName[j] << "   " << courseGrade[j] << endl;
