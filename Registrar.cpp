@@ -42,6 +42,7 @@ void Registrar::deleteRegistrar()
 Registrar::Registrar(const Registrar& r2)
 {
 	head = nullptr;
+	Student *pLast = nullptr;	// Pointer to last student in the new registrar
 	Student *p2 = r2.head;
 	// As long as p2 is not pointing to null,
 	while (p2 != nullptr)
@@ -49,8 +50,16 @@ Registrar::Registrar(const Registrar& r2)
 		// Allocate p1 pointer's memory
 		Student *p1 = new Student(*p2);
 		// And copy the contents of the pointer
-		p1->setNext(head);
-		head = p1;
+		p1->setNext(nullptr);
+		if (pLast == nullptr)	// If pLast is null, then this is the first student
+		{
+			head = p1;	// Set head to the first student
+		}
+		else
+		{
+			pLast->setNext(p1); // Set pointer from the last student to new student
+		}
+		pLast = p1;	// Set pLast to new student
 		p2 = p2->getNext();
 	}
 }
@@ -61,7 +70,9 @@ Registrar& Registrar::operator=(const Registrar& r2)
 	if (this != &r2)
 	{
 		deleteRegistrar();
+
 		head = nullptr;
+		Student *pLast = nullptr;	// Pointer to last student in the new registrar
 		Student *p2 = r2.head;
 		// As long as p2 is not pointing to null,
 		while (p2 != nullptr)
@@ -69,8 +80,16 @@ Registrar& Registrar::operator=(const Registrar& r2)
 			// Allocate p1 pointer's memory
 			Student *p1 = new Student(*p2);
 			// And copy the contents of the pointer
-			p1->setNext(head);
-			head = p1;
+			p1->setNext(nullptr);
+			if (pLast == nullptr)	// If pLast is null, then this is the first student
+			{
+				head = p1;	// Set head to the first student
+			}
+			else
+			{
+				pLast->setNext(p1); // Set pointer from the last student to new student
+			}
+			pLast = p1;	// Set pLast to new student
 			p2 = p2->getNext();
 		}
 	}
