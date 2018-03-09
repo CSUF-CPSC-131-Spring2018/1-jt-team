@@ -15,11 +15,11 @@ Registrar::Registrar()
 // destructor
 Registrar::~Registrar()
 {
-	deleteRegistrar();
+	destroyRegistrar();
 }
 
 // Destroy the Registrar
-void Registrar::deleteRegistrar()
+void Registrar::destroyRegistrar()
 {
 	Student *nodePtr;
 
@@ -69,7 +69,7 @@ Registrar& Registrar::operator=(const Registrar& r2)
 {
 	if (this != &r2)
 	{
-		deleteRegistrar();
+		destroyRegistrar();
 
 		head = nullptr;
 		Student *pLast = nullptr;	// Pointer to last student in the new registrar
